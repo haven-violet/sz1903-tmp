@@ -28,7 +28,7 @@ import org.apache.spark.sql.SparkSession
 object log2Parquet {
   def main(args: Array[String]): Unit = {
     //创建执行入口
-    val conf = new SparkConf().set("org.apache.spark.serializer", "org.apache.spark.serializer.KryoSerializer")
+    val conf = new SparkConf().set("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
 
     val spark = SparkSession.builder()
       .appName("log2Parquet")
@@ -37,13 +37,13 @@ object log2Parquet {
       .getOrCreate()
 
     /**
-      * 方式一: 使用SparkSql来读取textLog.log日志文件
+      * TODO 方式一: 使用SparkSql来读取textLog.log日志文件
       */
 //    val df = spark.read.text("data/textLog.log")
 //    df.show(false)
 
     /**
-      * 方式二: 使用SparkCore来读取textLog.log日志文件
+      * TODO 方式二: 使用SparkCore来读取textLog.log日志文件
       */
     val lines = spark.sparkContext.textFile("data/textLog.log")
 
@@ -144,6 +144,7 @@ object log2Parquet {
     })
 
     import spark.implicits._
+
     //如果我们使用的是类,而不是样例类,那么此时类最多只能使用22个字段
     //那么如果想要用类使用超过22个字段,需要继承product特质
     val df = words.toDF()
