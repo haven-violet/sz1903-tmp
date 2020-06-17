@@ -8,7 +8,7 @@ import org.apache.spark.sql.SparkSession
   * @Date 2020/6/16 21:11
   * @Version 1.0
   * @Description
-  * 统计各省市数据量分布情况
+  * 各省市数据量分布情况
   * 要求一: 将统计的结果输出成json,并输出到磁盘目录
   * 要求二: 将结果写到mysql数据库
   * 要求三: 用spark算子的方式实现上述的统计,存储到磁盘
