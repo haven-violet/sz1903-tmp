@@ -58,7 +58,7 @@ object LocationRtp {
     prop.setProperty("user", load.getString("jdbc.user"))
     prop.setProperty("password", load.getString("jdbc.password"))
 
-    df2.coalesce(1).write.mode(SaveMode.Overwrite).jdbc(
+    df2.coalesce(1).write.mode(SaveMode.Append).jdbc(
       load.getString("jdbc.url"),
       load.getString("jdbc.TableName"),
       prop)
