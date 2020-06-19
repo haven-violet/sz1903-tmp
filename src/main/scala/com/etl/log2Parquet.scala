@@ -149,8 +149,8 @@ object log2Parquet {
     //那么如果想要用类使用超过22个字段,需要继承product特质
     val df = words.toDF()
     //将处理后的数据存入到存储系统(本地)
-    df.write.parquet("F:\\project\\TestLog")
-//    df.show()
+//    df.write.parquet("F:\\project\\TestLog")
+    df.show()
 
   }
 }

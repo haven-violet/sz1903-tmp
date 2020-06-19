@@ -30,6 +30,14 @@ object TagsAD extends Tags{
     if(StringUtils.isNotBlank(adName)){
       list:+=("LN"+adName, 1)
     }
+    /*
+    TODO
+      3.4.3
+      渠道(标签格式: Appxxx -> 1)xxx为app名称, 使用缓存文件appname_dict
+      进行名称转换; App爱奇艺 -> 1
+     */
+    val adplatId: Int = row.getAs[Int]("adplatformproviderid")
+    list:+=("CN"+adplatId, 1)
     list
   }
 }
