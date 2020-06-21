@@ -2,7 +2,6 @@ package com.home
 
 import java.util
 import com.alibaba.fastjson.{JSON, JSONArray, JSONObject}
-import com.tags.TagsHome
 import org.apache.spark.SparkConf
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.{Row, SparkSession}

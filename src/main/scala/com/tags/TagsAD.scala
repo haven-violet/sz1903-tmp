@@ -13,7 +13,7 @@ import org.apache.spark.sql.Row
 object TagsAD extends Tags{
   def makeTags(args: Any*): List[(String, Int)] = {
     var list = List[(String, Int)]()
-    val row = args.asInstanceOf[Row]
+    val row = args(0).asInstanceOf[Row]
     val adType = row.getAs[Int]("adspacetype")
     val adName = row.getAs[String]("adspacetypename")
     /*
@@ -24,7 +24,7 @@ object TagsAD extends Tags{
        */
     adType match {
        case v if(v > 9) => list:+=("LC"+v,1)
-       case v if(v >= 0 && v < 9) => list:+=("LC0"+v, 1)
+       case v if(v >= 0 && v <= 9) => list:+=("LC0"+v, 1)
     }
     //保证名字不为空
     if(StringUtils.isNotBlank(adName)){
@@ -38,6 +38,15 @@ object TagsAD extends Tags{
      */
     val adplatId: Int = row.getAs[Int]("adplatformproviderid")
     list:+=("CN"+adplatId, 1)
+    /*
+    TODO
+      地域标签（省标签格式: ZPxxx -> 1,地市标签格式: ZCxxx -> 1）xxx为省或市名称
+     */
+    val provincename = row.getAs[String]("provincename")
+    val cityname = row.getAs[String]("cityname")
+
+    list:+=("ZP"+provincename, 1)
+    list:+=("ZC"+cityname, 1)
     list
   }
 }

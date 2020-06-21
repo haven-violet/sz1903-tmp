@@ -18,7 +18,7 @@ object TagsDev extends Tags{
         c) 运营商->1
      */
     var list = List[(String, Int)]()
-    val row = args.asInstanceOf[Row]
+    val row = args(0).asInstanceOf[Row]
     val client = row.getAs[Int]("client")
     client match {
       case 1 => list:+=("D00010001", 1)

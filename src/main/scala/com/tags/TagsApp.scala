@@ -18,8 +18,8 @@ object TagsApp extends Tags{
       App名称 (标签格式: APPxxx -> 1) xxx为app名称, 使用缓存文件appname_dict
       进行名称转换; App爱奇艺 -> 1
      */
-    val row = args.asInstanceOf[Row]
-    val dictBroad = args.asInstanceOf[Broadcast[collection.Map[String, String]]]
+    val row = args(0).asInstanceOf[Row]
+    val dictBroad = args(1).asInstanceOf[Broadcast[collection.Map[String, String]]]
     val appid = row.getAs[String]("appid")
     var appname = row.getAs[String]("appname")
     //如果appname没有从字典中获取
